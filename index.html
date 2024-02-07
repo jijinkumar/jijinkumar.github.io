@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine?</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  #panda-image {
+    margin-top: 50px;
+    max-width: 300px;
+  }
+  #buttons {
+    margin-top: 20px;
+    position: relative;
+  }
+  .button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    border-radius: 5px;
+  }
+  #yes-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    position: relative;
+    
+  }
+  #no-button {
+    background-color: #f44336; /* Red */
+    color: white;
+    width: 150px;
+    overflow-wrap: break-word;
+
+  }
+  .button:hover {
+    transform: scale(1.1);
+  }
+  #yes-button.big {
+    transform: scale(1.5);
+  }
+</style>
+</head>
+<body>
+<img src="https://i.imgur.com/leheA1r.jpg" alt="Cute Panda Love" id="panda-image">
+<div id="question">Will you be my Valentine?</div>
+<div id="buttons">
+  
+  <button class="button" id="yes-button">Yes</button>
+  <button class="button" id="no-button">No</button>
+</div>
+
+<script>
+  var noButton = document.getElementById("no-button");
+  var yesButton = document.getElementById("yes-button");
+  var questionText = document.getElementById("question");
+  var yesScale = 1; // Initial scale of the yes button
+  var noPressCount = 0;
+
+  var noResponses = [
+    "No? But I promise to make you smile every day!",
+    "Are you sure? I'll cherish you forever!",
+    "Oh, okay... Maybe another romantic gesture?",
+    "Really? Don't you want to make unforgettable memories with me?",
+    "Not feeling it today? How about a romantic dinner instead?",
+    "Maybe reconsider? I have so much love to give!",
+    "Just say yes, please! Our love story is waiting to begin!",
+    "Why not give it a try? I'll be the best partner you ever had!",
+    "You're breaking my heart! Please, give us a chance!",
+    "Last chance, think carefully! Together, we'll conquer the world!"
+  ];
+
+  noButton.addEventListener("click", function() {
+    noPressCount++;
+    var randomIndex = Math.floor(Math.random() * noResponses.length);
+    noButton.textContent = noResponses[randomIndex];
+
+    // Increase the size of the "Yes" button
+    yesScale += 0.1;
+    yesButton.style.transform = "scale(" + yesScale + ")";
+
+    if (noPressCount >= 10) {
+      noButton.style.transition = "opacity 1s";
+      noButton.style.opacity = "0";
+      setTimeout(function() {
+        noButton.style.display = "none";
+      }, 1000);
+    }
+  });
+
+  yesButton.addEventListener("click", function() {
+    alert("Yay! Happy Valentine's Day!");
+  });
+</script>
+</body>
+</html>
